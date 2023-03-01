@@ -89,16 +89,19 @@ Board.prototype.isOccupied = function (pos) {
  */
 
 Board.prototype._positionsToFlip = function(pos, color, dir, piecesToFlip) {
-  // debugger
   if (!piecesToFlip) piecesToFlip = [];
   if (!this.isValidPos(nextPos(pos, dir))) return [];
   if (!this.isOccupied(nextPos(pos, dir))) return [];
   let piece = this.getPiece(pos);
-  if (!piece || piece.color !== color) {
+  if (!piece) {
+    return this._positionsToFlip(nextPos(pos, dir), color, dir, piecesToFlip);
+  }
+  if (!!piece && piece.color !== color) {
+    debugger
     piecesToFlip.push(pos)
     return this._positionsToFlip(nextPos(pos, dir), color, dir, piecesToFlip);
   };
-  if (piece.color === color) return piecesToFlip;
+  if (!!piece && piece.color === color) return piecesToFlip;
 };
 
 function nextPos(pos, dir) {
