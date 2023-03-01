@@ -4,12 +4,29 @@
     display: block;
     width: 100%;
     height: auto;
-    margin-top: -100 auto;
+    margin-top: -120px;
     position: relative;
+    border: 1px solid black;
+    background: black;
+    border-radius: 5px;
 }
 
-.profile-info {
+/* .content-sidebar {
+    padding: 20px;
+} */
 
+
+.profile-info {
+    margin: 20px 0px;
+}
+
+.profile-info p {
+    margin: 20px 0px;
+}
+
+.profile-info h2 {
+    font-size: 24px;
+    font-weight: 700 ;
 }
 
 .profile-nav {
