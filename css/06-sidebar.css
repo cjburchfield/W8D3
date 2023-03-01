@@ -11,11 +11,6 @@
     border-radius: 5px;
 }
 
-/* .content-sidebar {
-    padding: 20px;
-} */
-
-
 .profile-info {
     margin: 20px 0px;
 }
@@ -29,14 +24,19 @@
     font-weight: 700 ;
 }
 
-.profile-nav {
-
-}
-
 .profile-nav li:first-child {
     border-top: 1px solid #ccc;
 }
 
 .profile-nav li {
     border-bottom: 1px solid #ccc;
+}
+
+.profile-friends li {
+    float: left;
+    width: 60px;
+}
+
+.profile-friends li:first-child {
+    margin: 0px 10px 10px 10px 10px;
 }
