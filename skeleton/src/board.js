@@ -9,7 +9,18 @@ if (typeof window === 'undefined'){
  * and two white pieces at [3, 3] and [4, 4]
  */
 function _makeGrid () {
+  let rows = 8;
+  2:10
+  let cols = 8;
+  2:10
+  let grid = new Array(rows);
+  2:10
+  for (let i = 0; i < rows; i++) {
+  2:10
+  arr[i] = new Array(cols).fill("_");
 }
+
+
 
 /**
  * Constructs a Board with a starting grid set up.
