@@ -89,16 +89,31 @@ Board.prototype.isOccupied = function (pos) {
  */
 
 Board.prototype._positionsToFlip = function(pos, color, dir, piecesToFlip) {
-  piecesToFlip ||= []
-  // if (!this.isValidPos(nextPos(pos, dir))) return []
-    if (!this.isOccupied(pos) || !this.isValidPos(nextPos(pos, dir))) {
-        return []; 
-    } else {
-       (piecesToFlip.push(pos))
-    }
-
-  return piecesToFlip.concat(this._positionsToFlip(nextPos(pos, dir), color, dir, piecesToFlip))
+  // debugger
+  if (!piecesToFlip) piecesToFlip = [];
+  if (!this.isValidPos(nextPos(pos, dir))) return [];
+  if (!this.isOccupied(nextPos(pos, dir))) return [];
+  let piece = this.getPiece(pos);
+  if (!piece || piece.color !== color) {
+    piecesToFlip.push(pos)
+    return this._positionsToFlip(nextPos(pos, dir), color, dir, piecesToFlip);
+  };
+  if (piece.color === color) return piecesToFlip;
 };
+
+function nextPos(pos, dir) {
+  return [(pos[0] + dir[0]), (pos[1] + dir[1])];
+};
+
+  // if (!this.isValidPos(nextPos(pos, dir))) return []
+//     if (!this.isOccupied(pos) || !this.isValidPos(nextPos(pos, dir))) {
+//         return []; 
+//     } else {
+//        (piecesToFlip.push(pos))
+//     }
+
+//   return piecesToFlip.concat(this._positionsToFlip(nextPos(pos, dir), color, dir, piecesToFlip))
+// };
 
   // while (!this.isMine(nextPos(pos, dir), color) && this.isValidPos(nextPos(pos, dir))) {
   //   let p = this.getPiece(nextPos(pos, dir));
@@ -106,10 +121,6 @@ Board.prototype._positionsToFlip = function(pos, color, dir, piecesToFlip) {
   // };
   // return piecesToFlip;
 
-
-function nextPos(pos, dir) {
-  return [(pos[0] + dir[0]), (pos[1] + dir[1])];
-};
 
 /**
  * Checks that a position is not already occupied and that the color
